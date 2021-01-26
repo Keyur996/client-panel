@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.6",
+    "@angular/cdk": "^11.1.0",
     "@angular/common": "~11.0.6",
     "@angular/compiler": "~11.0.6",
     "@angular/core": "~11.0.6",
@@ -19,9 +20,22 @@
     "@angular/platform-browser": "~11.0.6",
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
+    "@fullcalendar/angular": "^5.5.0",
+    "@fullcalendar/core": "^5.5.1",
+    "@fullcalendar/daygrid": "^5.5.0",
+    "@ng-bootstrap/ng-bootstrap": "^9.0.2",
+    "bootstrap": "^4.6.0",
+    "chart.js": "^2.9.4",
+    "jquery": "^3.5.1",
+    "moment": "^2.29.1",
+    "ngx-toastr": "^13.2.0",
+    "popper.js": "^1.16.1",
+    "primeflex": "^2.0.0",
+    "primeicons": "^4.1.0",
+    "primeng": "^11.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "^0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.6",
