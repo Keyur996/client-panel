@@ -72,7 +72,8 @@ import {DialogModule} from 'primeng/dialog';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {SidebarModule} from 'primeng/sidebar';
-import {TooltipModule} from 'primeng/tooltip';
+import { TooltipModule } from 'primeng/tooltip';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -88,6 +89,12 @@ import { RegisterComponent } from './auth/register/register.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
 // Forms Modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, PercentPipe, UpperCasePipe } from '@angular/common';
+import { AppRouterModule } from './app-router.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth'
+import { environment } from 'src/environments/environment';
+import { ClientService } from './services/client.service';
 
 @NgModule({
   declarations: [
@@ -115,9 +122,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       preventDuplicates: true,
       closeButton: true,
     }),
-    ToastModule, TableModule, DataViewModule, FullCalendarModule, GMapModule, OrderListModule, OrganizationChartModule, PaginatorModule, PickListModule, TimelineModule, TreeModule, VirtualScrollerModule, ConfirmDialogModule, ConfirmPopupModule, DialogModule, DynamicDialogModule, OverlayPanelModule, SidebarModule, TooltipModule, MenuModule, BreadcrumbModule, ContextMenuModule, MegaMenuModule, MenubarModule, SidebarModule, TabMenuModule, PanelMenuModule, SlideMenuModule, StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule
+    ToastModule, TableModule, DataViewModule, FullCalendarModule, GMapModule, OrderListModule, OrganizationChartModule, PaginatorModule, PickListModule, TimelineModule, TreeModule, VirtualScrollerModule, ConfirmDialogModule, ConfirmPopupModule, DialogModule, DynamicDialogModule, OverlayPanelModule, SidebarModule, TooltipModule, MenuModule, BreadcrumbModule, ContextMenuModule, MegaMenuModule, MenubarModule, SidebarModule, TabMenuModule, PanelMenuModule, SlideMenuModule, StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule, AppRouterModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule
   ],
-  providers: [],
+  providers: [ DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

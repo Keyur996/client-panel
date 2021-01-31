@@ -1,32 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <!-- logo -->
-  <a class="navbar-brand my-2">
-    <img src="assets/img/images.jpeg" height="30" width="30" class="d-inline-block align-top"> ClientPanel
-  </a>
-  <!-- triggered when screen gets small -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- links -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Dropdown</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Disabled</a>
-      </li>
-    </ul>
-    <!-- Search bar -->
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+<p-menubar [model] = 'items'
+  [style] = "{
+    'border-radius': '0px',
+    'background-color':'#e0e0e0',
+    'border': '1px solid #e0e0e0'
+  }"
+>
+  <ng-template pTemplate="start">
+    <img src="../../../assets/img/maem_logo.png"  height="20" class="p-ml-6 p-mr-5 p-mt-1">
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button type="button" icon="pi pi-user" class="p-button-secondary p-button-text" label="LogOut" pButton pRipple></button>
+  </ng-template>
+
+</p-menubar>
+
+
+<!-- style="border-radius: 0px !important;" -->
