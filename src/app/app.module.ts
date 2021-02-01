@@ -95,7 +95,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { ClientService } from './services/client.service';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +124,8 @@ import { ClientService } from './services/client.service';
     }),
     ToastModule, TableModule, DataViewModule, FullCalendarModule, GMapModule, OrderListModule, OrganizationChartModule, PaginatorModule, PickListModule, TimelineModule, TreeModule, VirtualScrollerModule, ConfirmDialogModule, ConfirmPopupModule, DialogModule, DynamicDialogModule, OverlayPanelModule, SidebarModule, TooltipModule, MenuModule, BreadcrumbModule, ContextMenuModule, MegaMenuModule, MenubarModule, SidebarModule, TabMenuModule, PanelMenuModule, SlideMenuModule, StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule, AppRouterModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+    FontAwesomeModule
   ],
   providers: [ DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService],
   bootstrap: [AppComponent]

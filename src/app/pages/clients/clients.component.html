@@ -1,1 +1,26 @@
-<p>clients works!</p>
+<p-table [value] = 'clients' styleClass='p-datatable-gridlines p-mt-4'>
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h2>
+                <span><i class="pi pi-users" style="font-size: 2rem"></i></span>   Clients
+            </h2>
+            <h3>Total Owned: {{ totalOwned | currency: 'USD' : 'symbol' }}</h3>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th width="25%" pSortableColumn="firstName">Name <p-sortIcon field="firstName"></p-sortIcon></th>
+            <th width="25%" pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+            <th width="25%" pSortableColumn="phone">Phone <p-sortIcon field="phone"></p-sortIcon></th>
+            <th width="25%" pSortableColumn="balance">Balance <p-sortIcon field="balance"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-client>
+        <tr>
+            <td>{{client.firstName}} {{client.lastName}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.phone}}</td>
+            <td>{{client.balance | currency: 'USD' : 'symbol'}}</td>
+        </tr>
+    </ng-template>
+</p-table>

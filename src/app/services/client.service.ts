@@ -26,8 +26,8 @@ export class ClientService {
           const data = action.payload.doc.data() as Client;
           data.id = action.payload.doc.id;
           return data;
-        })
-    }))
+        });
+    }));
     return this.clients;
   }
 }
