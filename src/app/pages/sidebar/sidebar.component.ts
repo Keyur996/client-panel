@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
+import { AddClientComponent } from '../add-client/add-client.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
   }
 
+  show = () => {
+    const ref = this.dialogService.open(AddClientComponent, {
+      // header: "Welcome Client",
+      // autoZIndex: false,
+      showHeader: false,
+      width: '60%',
+      closable: true,
+    });
+  }
 }

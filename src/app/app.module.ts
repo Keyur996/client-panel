@@ -69,7 +69,7 @@ import { ToastModule } from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {DialogModule} from 'primeng/dialog';
-import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {SidebarModule} from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
@@ -82,7 +82,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { AddClientComponent } from './pages/add-client/add-client.component';
-import { EditClientComponent } from './pages/edit-client/edit-client.component';
 import { ClientDetailComponent } from './pages/client-detail/client-detail.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -96,6 +95,20 @@ import { AngularFireAuthModule } from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { ClientService } from './services/client.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+//Panel Modules Panel
+import {AccordionModule} from 'primeng/accordion';
+import {CardModule} from 'primeng/card';
+import {DividerModule} from 'primeng/divider';
+import {FieldsetModule} from 'primeng/fieldset';
+import {PanelModule} from 'primeng/panel';
+import {SplitterModule} from 'primeng/splitter';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {TabViewModule} from 'primeng/tabview';
+import {ToolbarModule} from 'primeng/toolbar';
+import { MessagesModule } from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +118,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ClientsComponent,
     SidebarComponent,
     AddClientComponent,
-    EditClientComponent,
     ClientDetailComponent,
     LoginComponent,
     RegisterComponent,
@@ -122,12 +134,21 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       preventDuplicates: true,
       closeButton: true,
     }),
-    ToastModule, TableModule, DataViewModule, FullCalendarModule, GMapModule, OrderListModule, OrganizationChartModule, PaginatorModule, PickListModule, TimelineModule, TreeModule, VirtualScrollerModule, ConfirmDialogModule, ConfirmPopupModule, DialogModule, DynamicDialogModule, OverlayPanelModule, SidebarModule, TooltipModule, MenuModule, BreadcrumbModule, ContextMenuModule, MegaMenuModule, MenubarModule, SidebarModule, TabMenuModule, PanelMenuModule, SlideMenuModule, StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule, AppRouterModule,
-    AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
-    FontAwesomeModule
+    ToastModule, TableModule, DataViewModule, FullCalendarModule, GMapModule, OrderListModule,
+    OrganizationChartModule, PaginatorModule, PickListModule, TimelineModule, TreeModule,
+    VirtualScrollerModule, ConfirmDialogModule, ConfirmPopupModule, DialogModule, DynamicDialogModule,
+    OverlayPanelModule, SidebarModule, TooltipModule, MenuModule, BreadcrumbModule, ContextMenuModule,
+    MegaMenuModule, MenubarModule, SidebarModule, TabMenuModule, PanelMenuModule, SlideMenuModule,
+    StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule, AppRouterModule,
+    AngularFirestoreModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+    FontAwesomeModule, FormsModule, ReactiveFormsModule, AccordionModule, CardModule, DividerModule,
+    FieldsetModule, PanelModule, SplitterModule, ScrollPanelModule, TabViewModule, ToolbarModule, MessagesModule,
+    MessageModule
   ],
-  providers: [ DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService],
+  providers: [
+     DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService,
+     DialogService, MessageService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { Client } from '../models/Client';
 import { map } from 'rxjs/operators';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,26 @@ export class ClientService {
         });
     }));
     return this.clients;
+  }
+
+  saveClient = (client: Client): void => {
+    this.clientCollection.add(client);
+  }
+
+  getSingleClient = (id: string): Observable<Client> => {
+    this.clientDoc = this.afs.doc<Client>(`clients/${id}`);
+    //get Client
+    this.client = this.clientDoc.snapshotChanges().pipe(map(action => {
+      if(action.payload.exists === false){
+        // this.message.add({ severity: 'danger',  })
+        return null;
+      } else {
+        const data = action.payload.data() as Client;
+        data.id = action.payload.id;
+        return data;
+      }
+    }));
+
+    return this.client
   }
 }
