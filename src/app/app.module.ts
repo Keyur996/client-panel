@@ -62,7 +62,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 
 //Toastr Module
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ToastModule } from 'primeng/toast';
 
 //Alert Button
@@ -108,7 +108,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {ToolbarModule} from 'primeng/toolbar';
 import { MessagesModule } from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -143,11 +143,11 @@ import { MessageService } from 'primeng/api';
     AngularFirestoreModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
     FontAwesomeModule, FormsModule, ReactiveFormsModule, AccordionModule, CardModule, DividerModule,
     FieldsetModule, PanelModule, SplitterModule, ScrollPanelModule, TabViewModule, ToolbarModule, MessagesModule,
-    MessageModule
+    MessageModule,
   ],
   providers: [
      DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService,
-     DialogService, MessageService
+     DialogService, MessageService, ToastrService, ConfirmationService
     ],
   bootstrap: [AppComponent]
 })

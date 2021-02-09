@@ -38,13 +38,10 @@ export class AddClientComponent implements OnInit {
     } else {
       console.log(value);
       this.clientService.saveClient(value);
+      this.ref.close();
       this.form.reset();
-      this.message.add({severity: 'success', summary: 'Data Added Successfully'});
+      this.message.add({severity: 'success', summary: 'Client Added Successfully'});
       setTimeout(() => this.message.clear(), 3000);
     }
-  }
-
-  close = ():void => {
-    this.ref.close()
   }
 }

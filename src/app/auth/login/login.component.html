@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="p-d-flex p-formgrid p-jc-center p-grid" style="height: 80vh;">
+    <div class="p-col-12 p-lg-5 p-xl-4 p-md-6 p-sm-12 p-as-center">
+        <div class="p-card p-component">
+            <div class="p-card-header p-text-center" style="padding-top: 0.5rem;">
+                <h1><span><i class="pi pi-user-plus" style="font-size: 2rem;"></i></span> &nbsp; Client Panel logIn</h1>
+            </div>
+            <form class="" #logInForm="ngForm" (ngSubmit)= "onSubmit(logInForm)">
+                <div class="p-card-body">
+                    <div class="p-card-content p-formgrid p-grid p-fluid">
+                        <div class="p-field p-col-12 p-md-6">
+                            <label for="firstName">Email</label>
+                            <input type="text" name="firstName" id="firstName" pInputText>
+                        </div>
+                        <div class="p-fluid p-field">
+                            <label for="lastName">Password</label>
+                            <input type="text" name="lastName" id="lastName" pInputText>
+                        </div>
+                    </div>
+                    <div class="p-card-footer">
+                        <button pButton type="button" label="LogIn" class="p-button-raised p-button p-jc-center" icon="pi pi-user"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>  
+</div>

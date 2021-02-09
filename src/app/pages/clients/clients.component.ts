@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Client } from 'src/app/models/Client';
 import { ClientService } from 'src/app/services/client.service';
@@ -17,6 +19,9 @@ export class ClientsComponent implements OnInit {
 
   constructor(private clientService: ClientService,
     private dialog: DialogService,
+    public message: MessageService,
+    private tostr: ToastrService,
+    private confirmationService: ConfirmationService,
     ) { }
 
   ngOnInit(): void {
@@ -54,7 +59,22 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  delete = (): void => {
-
+  delete = (id: string): void => {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.clientService.deleteClient(id);
+          this.message.add({ severity: 'success', summary: 'Client Deleted Successfully..' });
+          setTimeout( () => this.message.clear(), 3000);
+      },
+      reject: () => {
+          this.tostr.info('Rejected', 'You are Safe...', {
+            timeOut: 3000,
+            closeButton: true,
+          });
+      }
+    });
   }
 }

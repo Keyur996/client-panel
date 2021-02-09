@@ -1,6 +1,6 @@
 <div class="p-dialog-header">
     <h3><span><i class="pi pi-user-edit" style="font-size: 2rem;"></i></span> &nbsp; Update Client</h3>
-    <button type="button" (click) = 'close()' class="p-button p-button-text p-ml-auto"><span><i class="pi pi-times"></i></span></button>
+    <button type="button" (click) = 'ref.close()' icon='pi pi-times' class="p-button-rounded p-button-text p-ml-auto" pButton pRipple></button>
 </div>
 <p-messages></p-messages>
 <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">

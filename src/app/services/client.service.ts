@@ -3,8 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { Client } from '../models/Client';
 import { map } from 'rxjs/operators';
-import { MessageService } from 'primeng/api';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -51,5 +49,15 @@ export class ClientService {
     }));
 
     return this.client
+  }
+
+  updateClient = (client: Client): void => {
+    this.clientDoc = this.afs.doc<Client>(`clients/${client.id}`);
+    this.clientDoc.update(client);
+  }
+
+  deleteClient = (id: string):void => {
+    this.clientDoc = this.afs.doc<Client>(`clients/${id}`);
+    this.clientDoc.delete();
   }
 }
