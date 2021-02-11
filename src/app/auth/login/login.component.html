@@ -7,17 +7,17 @@
             <form class="" #logInForm="ngForm" (ngSubmit)= "onSubmit(logInForm)">
                 <div class="p-card-body">
                     <div class="p-card-content p-formgrid p-grid p-fluid">
-                        <div class="p-field p-col-12 p-md-6">
+                        <div class="p-field p-col">
                             <label for="firstName">Email</label>
                             <input type="text" name="firstName" id="firstName" pInputText>
                         </div>
-                        <div class="p-fluid p-field">
+                        <div class="p-field p-col">
                             <label for="lastName">Password</label>
                             <input type="text" name="lastName" id="lastName" pInputText>
                         </div>
-                    </div>
-                    <div class="p-card-footer">
-                        <button pButton type="button" label="LogIn" class="p-button-raised p-button p-jc-center" icon="pi pi-user"></button>
+                        <div class="p-col-12 p-md-12 p-mt-3">
+                            <button type="submit" class="p-button-secondary p-button p-jc-center p-ripple"><span><i class="pi pi-user"></i> &nbsp; LogIn</span></button>
+                        </div>
                     </div>
                 </div>
             </form>
