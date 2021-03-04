@@ -5,7 +5,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
-import { AddClientComponent } from './pages/add-client/add-client.component';
 import { ClientDetailComponent } from './pages/client-detail/client-detail.component';
 
 const routes: Routes = [

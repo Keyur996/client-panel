@@ -109,6 +109,7 @@ import {ToolbarModule} from 'primeng/toolbar';
 import { MessagesModule } from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -147,7 +148,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   ],
   providers: [
      DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService,
-     DialogService, MessageService, ToastrService, ConfirmationService
+     DialogService, MessageService, ToastrService, ConfirmationService, AuthService
     ],
   bootstrap: [AppComponent]
 })
