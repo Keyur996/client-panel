@@ -143,12 +143,13 @@ import { AuthService } from './services/auth.service';
     StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule, AppRouterModule,
     AngularFirestoreModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
     FontAwesomeModule, FormsModule, ReactiveFormsModule, AccordionModule, CardModule, DividerModule,
-    FieldsetModule, PanelModule, SplitterModule, ScrollPanelModule, TabViewModule, ToolbarModule, MessagesModule,
+    FieldsetModule, PanelModule, SplitterModule, ScrollPanelModule, TabViewModule, ToolbarModule, 
+    MessagesModule,
     MessageModule,
   ],
   providers: [
      DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, ClientService,
-     DialogService, MessageService, ToastrService, ConfirmationService, AuthService
+     DialogService, MessageService , ToastrService, ConfirmationService, AuthService
     ],
   bootstrap: [AppComponent]
 })

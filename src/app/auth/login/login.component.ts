@@ -33,11 +33,16 @@ export class LoginComponent implements OnInit {
     if(this.form.valid){
       // console.log(this.user);
       this.authService.logIn(this.user).then( (res) => {
-        this.message.add({ severity: 'success', detail: 'LogIn Successful', icon: 'pi pi-user', life: 3000 });
         this.router.navigate(['/'], { relativeTo: this.route });
+        this.message.add({ severity: 'success', detail: 'LogIn Successful', icon: 'pi pi-user'});
+        setTimeout( () =>  this.message.clear(), 3000);
       }).catch( err => {
-        this.message.add({ severity: 'error', detail: err, icon: 'pi pi-user', life: 3000 });
+        this.message.add({ severity: 'error', detail: err.message , summary: "Error:" ,icon: 'pi pi-user'});
+        setTimeout( () =>  this.message.clear(), 3000);
       });
+    } else {
+      this.message.add({ severity: 'error', detail: 'Please Enter Valid Data' , summary: "*" });
+      setTimeout( () =>  this.message.clear(), 3000);
     }
   }
 }

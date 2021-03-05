@@ -9,12 +9,15 @@ import { ClientService } from 'src/app/services/client.service';
 export class DashboardComponent implements OnInit {
   clients: Client[];
   totalOwned: number;
+  show: boolean = false;
   constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {
+    this.show = true;
     this.clientService.getClients().subscribe(clients => {
       this.clients = clients;
       this.getTotalOwned();
+      this.show = false;
     });
   }
 

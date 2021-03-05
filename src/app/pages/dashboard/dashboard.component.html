@@ -1,3 +1,7 @@
+<!-- for Loading -->
+<div id="loading-bar-spinner" class="spinner" [class.hidden] = !show>
+    <div class="spinner-icon" *ngIf='show'></div>
+</div>
 <div class="p-formgrid p-grid p-jc-center" *ngIf="clients?.length > 0;else noClients">
     <div class="p-sm-12 p-md-12 p-lg-8">
         <p-messages></p-messages>
@@ -9,5 +13,5 @@
     </div>
 </div>
 <ng-template #noClients>
-    <p class="p-component no-client"><i class="pi pi-info-circle" style="font-size: .8em;"></i>&nbsp; No Client Available</p>
+    <p *ngIf='!show' class="p-component no-client"><i class="pi pi-info-circle" style="font-size: .8em;"></i>&nbsp; No Client Available</p>
 </ng-template>
