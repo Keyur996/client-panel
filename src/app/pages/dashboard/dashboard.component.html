@@ -1,6 +1,8 @@
 <!-- for Loading -->
-<div id="loading-bar-spinner" class="spinner" [class.hidden] = !show>
-    <div class="spinner-icon" *ngIf='show'></div>
+<div [class.hidden]='!show'>
+    <div class="waiting-loader">
+        <img *ngIf='show' src="assets/img/leaf-loading.gif" style="width: 200px;"/>
+    </div>
 </div>
 <div class="p-formgrid p-grid p-jc-center" *ngIf="clients?.length > 0;else noClients">
     <div class="p-sm-12 p-md-12 p-lg-8">
