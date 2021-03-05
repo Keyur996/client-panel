@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -13,9 +13,9 @@ import { ClientDetailComponent } from '../client-detail/client-detail.component'
 })
 
 export class ClientsComponent implements OnInit {
-  clients: Client[];
+  @Input() clients: Client[];
   client: Client;
-  totalOwned: number;
+  @Input() total: number;
 
   constructor(private clientService: ClientService,
     private dialog: DialogService,
@@ -25,26 +25,6 @@ export class ClientsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.clientService.getClients().subscribe(clients => {
-      this.clients = clients;
-      console.log(typeof this.clients);
-      this.getTotalOwned();
-      // console.log(this.getTotalOwned());
-    });
-  }
-
-  getTotalOwned = (): void => {
-    const total: number = this.clients.reduce( (total, client) => {
-      // console.log(typeof client.balance);
-      return (total + client.balance);
-    }, 0);
-    this.totalOwned = total;
-    // const map = this.clients.map( (client) => {
-    //   return client.balance;
-    // });
-    // console.log(map);
-    console.log(this.totalOwned);
-    // console.log(JSON.stringify(this.clients));
   }
 
   showDetail = (id: DOMStringList): void => {

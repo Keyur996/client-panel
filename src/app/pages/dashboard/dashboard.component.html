@@ -1,10 +1,13 @@
-<div class="p-formgrid p-grid p-jc-center">
+<div class="p-formgrid p-grid p-jc-center" *ngIf="clients?.length > 0;else noClients">
     <div class="p-sm-12 p-md-12 p-lg-8">
         <p-messages></p-messages>
         <app-sidebar class="p-d-sm-inline-flex p-d-md-inline-flex p-d-lg-none"></app-sidebar>
-        <app-clients></app-clients>
+        <app-clients [clients]='clients' [total]='totalOwned'></app-clients>
     </div>
     <div class="p-d-sm-flex p-col-1 p-mt-6">
         <app-sidebar class="p-d-sm-none p-d-md-none p-d-lg-block"></app-sidebar>
     </div>
 </div>
+<ng-template #noClients>
+    <p class="p-component no-client"><i class="pi pi-info-circle" style="font-size: .8em;"></i>&nbsp; No Client Available</p>
+</ng-template>
