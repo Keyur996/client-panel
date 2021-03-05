@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/User';
 
@@ -8,6 +8,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class AuthService {
+  loggedIn: Subject<boolean> = new Subject<boolean>();
 
   constructor(private afsAuth: AngularFireAuth) { }
 

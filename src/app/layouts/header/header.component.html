@@ -9,8 +9,11 @@
     <img src="../../../assets/img/maem_logo.png"  height="20" class="p-ml-6 p-mr-5 p-mt-1">
   </ng-template>
   <ng-template pTemplate="end">
-    <button type="button" icon="pi pi-user" class="p-button-secondary p-button-text" (click)='logOut()' label="LogOut" pButton pRipple></button>
+    <button type="button" *ngIf="loggedIn" icon="pi pi-user" class="p-button-secondary p-button-text" (click)='logOut()' label="LogOut" pButton pRipple></button>
+    <button type="button" *ngIf="!loggedIn" icon="pi pi-user" class="p-button-help p-button-text"
+    [routerLink]="['/login']"  label="LogIn" pButton pRipple></button>
   </ng-template>
+
 
 </p-menubar>
 

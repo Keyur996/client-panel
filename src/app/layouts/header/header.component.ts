@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute) { }
+    loggedIn: boolean = false;
 
   ngOnInit(): void {
     this.items = [
@@ -25,13 +26,17 @@ export class HeaderComponent implements OnInit {
         label: 'Register',
         icon: 'pi pi-user-plus',
         routerLink: ['/register']
-      },
-      {
-        label: 'LogIn',
-        icon: 'pi pi-user',
-        routerLink: ['/login'],
       }
     ]
+
+    this.authService.getAuth().subscribe(auth => {
+      if(auth) {
+        this.router.navigate(['/'], { relativeTo: this.route });
+        this.authService.loggedIn.next(true);
+        this.loggedIn = true;
+      }
+    });
+
    }
 
    logOut() {

@@ -20,14 +20,12 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
     private message: MessageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit(): void {
-    this.authService.getAuth().subscribe(auth => {
-      if(auth) {
-        this.router.navigate(['/'], { relativeTo: this.route });
-      }
+    this.authService.loggedIn.subscribe( (loggedIn) => {
+      this.router.navigate(['/'], { relativeTo: this.route })
     });
   }
 
