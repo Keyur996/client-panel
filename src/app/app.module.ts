@@ -143,7 +143,7 @@ import { AuthService } from './services/auth.service';
     StepsModule, TieredMenuModule, FormsModule, ReactiveFormsModule, AppRouterModule,
     AngularFirestoreModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
     FontAwesomeModule, FormsModule, ReactiveFormsModule, AccordionModule, CardModule, DividerModule,
-    FieldsetModule, PanelModule, SplitterModule, ScrollPanelModule, TabViewModule, ToolbarModule, 
+    FieldsetModule, PanelModule, SplitterModule, ScrollPanelModule, TabViewModule, ToolbarModule,
     MessagesModule,
     MessageModule,
   ],

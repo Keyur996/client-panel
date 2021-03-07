@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.authService.loggedIn.subscribe( (loggedIn) => {
+    this.authService.userEmail.subscribe( (email) => {
       this.router.navigate(['/'], { relativeTo: this.route })
     });
   }
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     if(this.form.valid){
       // console.log(this.user);
+      // console.log(this.form.value);
       this.authService.logIn(this.user).then( (res) => {
         this.router.navigate(['/'], { relativeTo: this.route });
         this.message.add({ severity: 'success', detail: 'LogIn Successful', icon: 'pi pi-user'});

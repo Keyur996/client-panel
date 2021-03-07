@@ -4,11 +4,11 @@
         <img *ngIf='show' src="assets/img/leaf-loading.gif" style="width: 200px;"/>
     </div>
 </div>
-<div class="p-formgrid p-grid p-jc-center" *ngIf="clients?.length > 0;else noClients">
+<div class="p-formgrid p-grid p-jc-center">
     <div class="p-sm-12 p-md-12 p-lg-8">
         <p-messages></p-messages>
         <app-sidebar class="p-d-sm-inline-flex p-d-md-inline-flex p-d-lg-none"></app-sidebar>
-        <app-clients [clients]='clients' [total]='totalOwned'></app-clients>
+        <app-clients [clients]='clients' [total]='totalOwned' *ngIf="clients?.length > 0;else noClients"></app-clients>
     </div>
     <div class="p-d-sm-flex p-col-1 p-mt-6">
         <app-sidebar class="p-d-sm-none p-d-md-none p-d-lg-block"></app-sidebar>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AddClientComponent } from '../add-client/add-client.component';
 
@@ -16,8 +16,6 @@ export class SidebarComponent implements OnInit {
 
   show = () => {
     const ref = this.dialogService.open(AddClientComponent, {
-      // header: "Welcome Client",
-      // autoZIndex: false,
       showHeader: false,
       width: '60%',
       closable: true,

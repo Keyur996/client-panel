@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute) { }
-    loggedIn: boolean = false;
 
   ngOnInit(): void {
+
     this.items = [
       {
         label: 'Home',
@@ -30,21 +30,13 @@ export class HeaderComponent implements OnInit {
       }
     ]
 
-    this.authService.getAuth().subscribe(auth => {
-      if(auth) {
-        this.router.navigate(['/'], { relativeTo: this.route });
-        this.authService.loggedIn.next(true);
-        this.userEmail = auth.email;
-        this.loggedIn = true;
-        console.log(this.userEmail);
-      }
+    this.authService.userEmail.subscribe( (email) => {
+      this.userEmail = email
     });
-
    }
 
    logOut() {
     this.authService.logOut();
     this.router.navigate(['login'], { relativeTo: this.route });
-    this.loggedIn = false;
    }
 }

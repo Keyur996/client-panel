@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Client } from 'src/app/models/Client';
+import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,20 @@ export class DashboardComponent implements OnInit {
   clients: Client[];
   totalOwned: number;
   show: boolean = false;
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.show = true;
-    this.clientService.getClients().subscribe(clients => {
-      this.clients = clients;
-      this.getTotalOwned();
-      this.show = false;
+    this.authService.getAuth().subscribe( (auth) => {
+      if(auth) {
+        this.authService.userEmail.next(auth.email);
+        this.clientService.getClients().subscribe(clients => {
+          this.clients = clients;
+          this.getTotalOwned();
+          this.show = false;
+        });
+      }
     });
   }
 

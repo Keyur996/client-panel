@@ -8,12 +8,12 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn: Subject<boolean> = new Subject<boolean>();
+  userEmail: Subject<string> = new Subject<string>();
 
   constructor(private afsAuth: AngularFireAuth) { }
 
   async logIn(user: User) {
-      const userData = await this.afsAuth.signInWithEmailAndPassword(user.email, user.password)
+      const userData = await this.afsAuth.signInWithEmailAndPassword(user.email, user.password);
       return userData;
   }
 
@@ -23,5 +23,6 @@ export class AuthService {
 
   logOut(): void {
     this.afsAuth.signOut();
+    this.userEmail.next('');
   }
 }
