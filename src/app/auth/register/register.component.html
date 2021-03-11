@@ -1,1 +1,35 @@
-<p>register works!</p>
+<p-messages></p-messages>
+<div class="p-d-flex p-formgrid p-jc-center p-grid" style="height: 80vh;">
+    <div class="p-col-12 p-lg-5 p-xl-4 p-md-6 p-sm-12 p-as-center">
+        <div class="p-card p-component">
+            <div class="p-card-header p-text-center" style="padding-top: 0.5rem;">
+                <h1><span><i class="pi pi-user-plus" style="font-size: 2rem;"></i></span> &nbsp; Client Panel Register</h1>
+            </div>
+            <form class="" #registerForm="ngForm" (ngSubmit)= "onSubmit()">
+                <div class="p-card-body">
+                    <div class="p-card-content p-formgrid p-grid p-fluid">
+                        <div class="p-field p-col-12 p-md-6">
+                            <label for="email"> Email </label>
+                              <input type="text" #email='ngModel' [(ngModel)]='user.email' name="email" id="email"
+                              [ngClass]="{'ng-invalid ng-dirty': email.errors && email.touched}"
+                              required pInputText>
+                            <span class="p-error" *ngIf="email.errors?.required && email.touched">Email is required</span>
+                        </div>
+                        <div class="p-field p-col-12 p-md-6">
+                            <label for="password">Password </label>
+                            <input type="password" #password='ngModel' [(ngModel)]='user.password' name="password" id="password" required pInputText
+                            [ngClass]="{'ng-invalid ng-dirty': password.errors && password.touched}">
+                            <span class="p-error" *ngIf="password.errors?.required && password.touched">
+                              Password is reuired
+                            </span>
+                        </div>
+                        <div class="p-col-12 p-md-12 p-mt-3">
+                            <button type="submit" class="p-component p-button-secondary p-button p-jc-center p-ripple"><span><i class="pi pi-user"></i> &nbsp; Register</span></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

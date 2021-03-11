@@ -6,7 +6,6 @@
 </div>
 <div class="p-formgrid p-grid p-jc-center">
     <div class="p-sm-12 p-md-12 p-lg-8">
-        <p-messages></p-messages>
         <app-sidebar class="p-d-sm-inline-flex p-d-md-inline-flex p-d-lg-none"></app-sidebar>
         <app-clients [clients]='clients' [total]='totalOwned' *ngIf="clients?.length > 0;else noClients"></app-clients>
     </div>

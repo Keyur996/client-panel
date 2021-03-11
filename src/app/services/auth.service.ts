@@ -25,4 +25,9 @@ export class AuthService {
     this.afsAuth.signOut();
     this.userEmail.next('');
   }
+
+  async register(user: User) {
+    const userData = await this.afsAuth.createUserWithEmailAndPassword(user.email, user.password);
+    return userData;
+  }
 }

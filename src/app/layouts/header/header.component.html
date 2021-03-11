@@ -12,7 +12,12 @@
     <span *ngIf="userEmail" class='user-data'>{{ userEmail }}</span>
     <button type="button" *ngIf="userEmail" icon="pi pi-user"
     class="p-button-secondary p-button-text" (click)='logOut()' label="LogOut" pButton pRipple></button>
+
+    <button type="button" *ngIf="!userEmail" icon="pi pi-user-plus" class="p-button-help p-button-text"
+    [routerLink]="['/register']"  label="Register" pButton pRipple></button>
+
     <button type="button" *ngIf="!userEmail" icon="pi pi-user" class="p-button-help p-button-text"
     [routerLink]="['/login']"  label="LogIn" pButton pRipple></button>
+
   </ng-template>
 </p-menubar>
