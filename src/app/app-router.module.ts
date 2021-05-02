@@ -23,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   exports: [RouterModule],
-  imports: [CommonModule, RouterModule.forRoot(routes)],
+  imports: [CommonModule, RouterModule.forRoot(routes, { useHash: true })],
   providers: [AuthGuard],
   declarations: [],
 })
