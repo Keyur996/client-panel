@@ -5,20 +5,23 @@ import { map } from 'rxjs/operators';
 import { User } from '../models/User';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   userEmail: Subject<string> = new Subject<string>();
 
-  constructor(private afsAuth: AngularFireAuth) { }
+  constructor(private afsAuth: AngularFireAuth) {}
 
   async logIn(user: User) {
-      const userData = await this.afsAuth.signInWithEmailAndPassword(user.email, user.password);
-      return userData;
+    const userData = await this.afsAuth.signInWithEmailAndPassword(
+      user.email,
+      user.password
+    );
+    return userData;
   }
 
   getAuth(): Observable<any> {
-    return this.afsAuth.authState.pipe(map( auth => auth ));
+    return this.afsAuth.authState.pipe(map((auth) => auth));
   }
 
   logOut(): void {
@@ -27,7 +30,10 @@ export class AuthService {
   }
 
   async register(user: User) {
-    const userData = await this.afsAuth.createUserWithEmailAndPassword(user.email, user.password);
+    const userData = await this.afsAuth.createUserWithEmailAndPassword(
+      user.email,
+      user.password
+    );
     return userData;
   }
 }

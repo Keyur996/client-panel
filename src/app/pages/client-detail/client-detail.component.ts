@@ -7,10 +7,9 @@ import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-client-detail',
   templateUrl: './client-detail.component.html',
-  styleUrls: ['./client-detail.component.css']
+  styleUrls: ['./client-detail.component.css'],
 })
 export class ClientDetailComponent implements OnInit {
-
   @ViewChild('clientForm') form: any;
 
   id: string;
@@ -22,38 +21,41 @@ export class ClientDetailComponent implements OnInit {
     balance: 0,
   };
 
-  constructor(private clientService: ClientService,
+  constructor(
+    private clientService: ClientService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    private message: MessageService,
-    ) { }
+    private message: MessageService
+  ) {}
 
   ngOnInit(): void {
     //get id
     this.id = this.config.data.id;
     // console.log(this.config.data);
 
-    this.clientService.getSingleClient(this.id).subscribe( client => {
+    this.clientService.getSingleClient(this.id).subscribe((client) => {
       console.log(client);
       this.client = client;
-    })
+    });
   }
-  
-  onSubmit({value, valid}: {value:Client, valid:boolean}) {
+
+  onSubmit({ value, valid }: { value: Client; valid: boolean }) {
     // console.log(this.id);
 
-    //Add id to Client 
+    //Add id to Client
     value.id = this.id;
 
-    if(!valid){
+    if (!valid) {
       this.message.add({ severity: 'error', summary: 'Fill Data Properly' });
-      setTimeout( () => this.message.clear() , 3000);
+      setTimeout(() => this.message.clear(), 3000);
     } else {
       this.clientService.updateClient(value);
       this.ref.close();
-      this.message.add( {severity: 'success', summary: 'Client Updated Successfully'} );
-      setTimeout( () => this.message.clear() , 3000);
+      this.message.add({
+        severity: 'success',
+        summary: 'Client Updated Successfully',
+      });
+      setTimeout(() => this.message.clear(), 3000);
     }
-    
   }
 }

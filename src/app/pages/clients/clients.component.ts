@@ -9,27 +9,26 @@ import { ClientDetailComponent } from '../client-detail/client-detail.component'
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
-  styleUrls: ['./clients.component.scss']
+  styleUrls: ['./clients.component.scss'],
 })
-
 export class ClientsComponent implements OnInit {
   @Input() clients: Client[];
   client: Client;
   @Input() total: number;
 
-  constructor(private clientService: ClientService,
+  constructor(
+    private clientService: ClientService,
     private dialog: DialogService,
     public message: MessageService,
     private tostr: ToastrService,
-    private confirmationService: ConfirmationService,
-    ) { }
+    private confirmationService: ConfirmationService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   showDetail = (id: DOMStringList): void => {
     // console.log(id);
-    this.dialog.open( ClientDetailComponent , {
+    this.dialog.open(ClientDetailComponent, {
       width: '60%',
       showHeader: false,
       closable: true,
@@ -37,7 +36,7 @@ export class ClientsComponent implements OnInit {
         id: id,
       },
     });
-  }
+  };
 
   delete = (id: string): void => {
     this.confirmationService.confirm({
@@ -45,16 +44,19 @@ export class ClientsComponent implements OnInit {
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-          this.clientService.deleteClient(id);
-          this.message.add({ severity: 'success', summary: 'Client Deleted Successfully..' });
-          setTimeout( () => this.message.clear(), 3000);
+        this.clientService.deleteClient(id);
+        this.message.add({
+          severity: 'success',
+          summary: 'Client Deleted Successfully..',
+        });
+        setTimeout(() => this.message.clear(), 3000);
       },
       reject: () => {
-          this.tostr.info('Rejected', 'You are Safe...', {
-            timeOut: 3000,
-            closeButton: true,
-          });
-      }
+        this.tostr.info('Rejected', 'You are Safe...', {
+          timeOut: 3000,
+          closeButton: true,
+        });
+      },
     });
-  }
+  };
 }

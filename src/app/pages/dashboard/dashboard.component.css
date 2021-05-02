@@ -1,15 +1,15 @@
 .no-client {
-    margin: 3em 0;
-    color: #1e88e5;
-    text-align: center;
-    font-size: 2em;
+  margin: 3em 0;
+  color: #1e88e5;
+  text-align: center;
+  font-size: 2em;
 }
 
 .hidden {
   visibility: hidden;
 }
 
-.waiting-loader{
+.waiting-loader {
   position: absolute;
   top: 40%;
   left: 45%;

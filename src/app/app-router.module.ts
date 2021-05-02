@@ -9,23 +9,22 @@ import { ClientDetailComponent } from './pages/client-detail/client-detail.compo
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent , canActivate: [AuthGuard]},
-  { path:'login', component: LoginComponent  },
-  { path:'register', component: RegisterComponent },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   // { path:'add-client', component: AddClientComponent},
-  { path:'client/:id', component: ClientDetailComponent , canActivate: [AuthGuard]},
-  { path:'**', component: NotFoundComponent },
-]
+  {
+    path: 'client/:id',
+    component: ClientDetailComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '**', component: NotFoundComponent },
+];
 
 @NgModule({
-  exports: [
-    RouterModule,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes),
-  ],
+  exports: [RouterModule],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   providers: [AuthGuard],
   declarations: [],
 })
-export class AppRouterModule { }
+export class AppRouterModule {}

@@ -8,42 +8,59 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   @ViewChild('logInForm') form: NgForm;
   user: User = {
     email: '',
-    password: ''
+    password: '',
   };
 
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     private message: MessageService,
     private router: Router,
-    private route: ActivatedRoute,
-    ) { }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.authService.userEmail.subscribe( (email) => {
-      this.router.navigate(['/'], { relativeTo: this.route })
+    this.authService.userEmail.subscribe((email) => {
+      this.router.navigate(['/'], { relativeTo: this.route });
     });
   }
 
-  onSubmit(){
-    if(this.form.valid){
+  onSubmit() {
+    if (this.form.valid) {
       // console.log(this.user);
       // console.log(this.form.value);
-      this.authService.logIn(this.user).then( (res) => {
-        this.router.navigate(['/'], { relativeTo: this.route });
-        this.message.add({ severity: 'success', detail: 'LogIn Successful', icon: 'pi pi-user'});
-        setTimeout( () =>  this.message.clear(), 3000);
-      }).catch( err => {
-        this.message.add({ severity: 'error', detail: err.message , summary: "Error:" ,icon: 'pi pi-user'});
-        setTimeout( () =>  this.message.clear(), 3000);
-      });
+      this.authService
+        .logIn(this.user)
+        .then((res) => {
+          this.router.navigate(['/'], { relativeTo: this.route });
+          this.message.add({
+            severity: 'success',
+            detail: 'LogIn Successful',
+            icon: 'pi pi-user',
+          });
+          setTimeout(() => this.message.clear(), 3000);
+        })
+        .catch((err) => {
+          this.message.add({
+            severity: 'error',
+            detail: err.message,
+            summary: 'Error:',
+            icon: 'pi pi-user',
+          });
+          setTimeout(() => this.message.clear(), 3000);
+        });
     } else {
-      this.message.add({ severity: 'error', detail: 'Please Enter Valid Data' , summary: "*" });
-      setTimeout( () =>  this.message.clear(), 3000);
+      this.message.add({
+        severity: 'error',
+        detail: 'Please Enter Valid Data',
+        summary: '*',
+      });
+      setTimeout(() => this.message.clear(), 3000);
     }
   }
 }

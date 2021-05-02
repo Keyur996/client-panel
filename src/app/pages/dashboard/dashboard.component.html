@@ -1,18 +1,27 @@
 <!-- for Loading -->
-<div [class.hidden]='!show'>
-    <div class="waiting-loader">
-        <img *ngIf='show' src="assets/img/leaf-loading.gif" style="width: 200px;"/>
-    </div>
+<div [class.hidden]="!show">
+  <div class="waiting-loader">
+    <img *ngIf="show" src="assets/img/leaf-loading.gif" style="width: 200px" />
+  </div>
 </div>
 <div class="p-formgrid p-grid p-jc-center">
-    <div class="p-sm-12 p-md-12 p-lg-8">
-        <app-sidebar class="p-d-sm-inline-flex p-d-md-inline-flex p-d-lg-none"></app-sidebar>
-        <app-clients [clients]='clients' [total]='totalOwned' *ngIf="clients?.length > 0;else noClients"></app-clients>
-    </div>
-    <div class="p-d-sm-flex p-col-1 p-mt-6">
-        <app-sidebar class="p-d-sm-none p-d-md-none p-d-lg-block"></app-sidebar>
-    </div>
+  <div class="p-sm-12 p-md-12 p-lg-8">
+    <app-sidebar
+      class="p-d-sm-inline-flex p-d-md-inline-flex p-d-lg-none"
+    ></app-sidebar>
+    <app-clients
+      [clients]="clients"
+      [total]="totalOwned"
+      *ngIf="clients?.length > 0; else noClients"
+    ></app-clients>
+  </div>
+  <div class="p-d-sm-flex p-col-1 p-mt-6">
+    <app-sidebar class="p-d-sm-none p-d-md-none p-d-lg-block"></app-sidebar>
+  </div>
 </div>
 <ng-template #noClients>
-    <p *ngIf='!show' class="p-component no-client"><i class="pi pi-info-circle" style="font-size: .8em;"></i>&nbsp; No Client Available</p>
+  <p *ngIf="!show" class="p-component no-client">
+    <i class="pi pi-info-circle" style="font-size: 0.8em"></i>&nbsp; No Client
+    Available
+  </p>
 </ng-template>

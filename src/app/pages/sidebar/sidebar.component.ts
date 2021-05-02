@@ -5,14 +5,12 @@ import { AddClientComponent } from '../add-client/add-client.component';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+  constructor(private dialogService: DialogService) {}
 
-  constructor(private dialogService: DialogService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   show = () => {
     const ref = this.dialogService.open(AddClientComponent, {
@@ -20,5 +18,5 @@ export class SidebarComponent implements OnInit {
       width: '60%',
       closable: true,
     });
-  }
+  };
 }

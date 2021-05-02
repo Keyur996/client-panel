@@ -1,9 +1,9 @@
-.hover-effect:hover{
+.hover-effect:hover {
   background-color: #2196f3;
 }
 
 .user-data {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   display: -webkit-inline-flex;
   color: #0073d1;
 }

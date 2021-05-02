@@ -1,60 +1,153 @@
 <div class="p-dialog-header">
-    <h3><span><i class="pi pi-user-edit" style="font-size: 2rem;"></i></span> &nbsp; Update Client</h3>
-    <button type="button" (click) = 'ref.close()' icon='pi pi-times' class="p-button-rounded p-button-text p-ml-auto" pButton pRipple></button>
+  <h3>
+    <span><i class="pi pi-user-edit" style="font-size: 2rem"></i></span> &nbsp;
+    Update Client
+  </h3>
+  <button
+    type="button"
+    (click)="ref.close()"
+    icon="pi pi-times"
+    class="p-button-rounded p-button-text p-ml-auto"
+    pButton
+    pRipple
+  ></button>
 </div>
 <p-messages></p-messages>
 <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
-    <div class="p-formgrid p-grid p-fluid">
-        <div class="p-field p-col-12 p-md-6">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" [(ngModel)]="client.firstName" name="firstName"
-                #clientfirstName = "ngModel"
-                [ngClass]="{'ng-invalid ng-dirty': clientfirstName.errors && clientfirstName.touched}"
-                required minlength="3" aria-describedby="fname-help"
-                pInputText>
-                <small id="fname-help" *ngIf="clientfirstName.errors?.required && clientfirstName.touched" class="p-error">First name is required</small>
-                <small id="fname-help" *ngIf="clientfirstName.errors?.minlength" class="p-error">Min-Length 3 required</small>
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" [(ngModel)]="client.lastName" name="lastName"
-                #clientlastName = "ngModel"
-                [ngClass]="{'ng-invalid ng-dirty': clientlastName.errors && clientlastName.touched}"
-                required minlength="3" aria-describedby="lname-help"
-                pInputText>
-                <small id="lname-help" *ngIf="clientlastName.errors?.required && clientlastName.touched" class="p-error">Last name is required</small>
-                <small id="lname-help" *ngIf="clientlastName.errors?.minlength" class="p-error">Min-Length 3 required</small>
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="email">Email</label>
-            <input type="text" id="email" [(ngModel)]="client.email" name="email"
-            #clientEmail = "ngModel"
-            [ngClass]="{'ng-invalid ng-dirty': clientEmail.errors && clientEmail.touched}" required
-            aria-describedby="email-help"
-            pInputText>
-            <small id="email-help" *ngIf="clientEmail.errors?.required && clientEmail.touched" class="p-error">Email is required</small>
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" [(ngModel)]="client.phone" name="phone"
-            #clientPhone = "ngModel"
-            [ngClass]="{'ng-invalid ng-dirty': clientPhone.errors && clientPhone.touched}" required
-            aria-describedby="phone-help"
-            pattern="[1-9]{1}[0-9]{9}" maxlength="10"
-            pInputText>
-            <small id="phone-help" *ngIf="clientPhone.errors?.required && clientPhone.touched" class="p-error">Phone No. is required</small>
-            <small id="phone-help" *ngIf="clientPhone.errors?.pattern || clientPhone.errors?.maxlength" class="p-error">Please Enter Valid Phone No</small>
-        </div>
-        <div class="p-field p-col-12 p-md-6 p-md-offset-3">
-            <label for="balance">Balance</label>
-            <input type="number" id="balance" [(ngModel)]="client.balance" name="balance"
-            #clientBalance = "ngModel"
-            [ngClass]="{'ng-invalid ng-dirty': clientBalance.errors && clientBalance.touched}"
-            aria-describedby="fname-help"
-            pInputText>
-        </div>
-        <div class="p-col-12 p-md-12 p-mt-3">
-            <button type="submit" class="p-button-secondary p-button p-jc-center p-ripple"><span><i class="pi pi-user-edit"></i> &nbsp; Update Client</span></button>
-        </div>
+  <div class="p-formgrid p-grid p-fluid">
+    <div class="p-field p-col-12 p-md-6">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        [(ngModel)]="client.firstName"
+        name="firstName"
+        #clientfirstName="ngModel"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            clientfirstName.errors && clientfirstName.touched
+        }"
+        required
+        minlength="3"
+        aria-describedby="fname-help"
+        pInputText
+      />
+      <small
+        id="fname-help"
+        *ngIf="clientfirstName.errors?.required && clientfirstName.touched"
+        class="p-error"
+        >First name is required</small
+      >
+      <small
+        id="fname-help"
+        *ngIf="clientfirstName.errors?.minlength"
+        class="p-error"
+        >Min-Length 3 required</small
+      >
     </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        [(ngModel)]="client.lastName"
+        name="lastName"
+        #clientlastName="ngModel"
+        [ngClass]="{
+          'ng-invalid ng-dirty': clientlastName.errors && clientlastName.touched
+        }"
+        required
+        minlength="3"
+        aria-describedby="lname-help"
+        pInputText
+      />
+      <small
+        id="lname-help"
+        *ngIf="clientlastName.errors?.required && clientlastName.touched"
+        class="p-error"
+        >Last name is required</small
+      >
+      <small
+        id="lname-help"
+        *ngIf="clientlastName.errors?.minlength"
+        class="p-error"
+        >Min-Length 3 required</small
+      >
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        [(ngModel)]="client.email"
+        name="email"
+        #clientEmail="ngModel"
+        [ngClass]="{
+          'ng-invalid ng-dirty': clientEmail.errors && clientEmail.touched
+        }"
+        required
+        aria-describedby="email-help"
+        pInputText
+      />
+      <small
+        id="email-help"
+        *ngIf="clientEmail.errors?.required && clientEmail.touched"
+        class="p-error"
+        >Email is required</small
+      >
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        id="phone"
+        [(ngModel)]="client.phone"
+        name="phone"
+        #clientPhone="ngModel"
+        [ngClass]="{
+          'ng-invalid ng-dirty': clientPhone.errors && clientPhone.touched
+        }"
+        required
+        aria-describedby="phone-help"
+        pattern="[1-9]{1}[0-9]{9}"
+        maxlength="10"
+        pInputText
+      />
+      <small
+        id="phone-help"
+        *ngIf="clientPhone.errors?.required && clientPhone.touched"
+        class="p-error"
+        >Phone No. is required</small
+      >
+      <small
+        id="phone-help"
+        *ngIf="clientPhone.errors?.pattern || clientPhone.errors?.maxlength"
+        class="p-error"
+        >Please Enter Valid Phone No</small
+      >
+    </div>
+    <div class="p-field p-col-12 p-md-6 p-md-offset-3">
+      <label for="balance">Balance</label>
+      <input
+        type="number"
+        id="balance"
+        [(ngModel)]="client.balance"
+        name="balance"
+        #clientBalance="ngModel"
+        [ngClass]="{
+          'ng-invalid ng-dirty': clientBalance.errors && clientBalance.touched
+        }"
+        aria-describedby="fname-help"
+        pInputText
+      />
+    </div>
+    <div class="p-col-12 p-md-12 p-mt-3">
+      <button
+        type="submit"
+        class="p-button-secondary p-button p-jc-center p-ripple"
+      >
+        <span><i class="pi pi-user-edit"></i> &nbsp; Update Client</span>
+      </button>
+    </div>
+  </div>
 </form>

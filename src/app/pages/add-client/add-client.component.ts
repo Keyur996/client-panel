@@ -7,41 +7,48 @@ import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
-  styleUrls: ['./add-client.component.css']
+  styleUrls: ['./add-client.component.css'],
 })
 export class AddClientComponent implements OnInit {
-
   @ViewChild('clientForm') form: any;
 
-  client: Client ={
+  client: Client = {
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     balance: 0,
-  }
+  };
 
-  constructor(public ref: DynamicDialogRef, 
+  constructor(
+    public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private message: MessageService,
-    private clientService: ClientService) { }
+    private clientService: ClientService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  onSubmit = ({value, valid }: { value:Client, valid: boolean} ) => {
-    if(!valid) {
+  onSubmit = ({ value, valid }: { value: Client; valid: boolean }) => {
+    if (!valid) {
       // message
       console.log(valid);
-      this.message.add({severity: 'error', summary: 'Please Enter valid Data', detail: 'fill properly'});
+      this.message.add({
+        severity: 'error',
+        summary: 'Please Enter valid Data',
+        detail: 'fill properly',
+      });
       setTimeout(() => this.message.clear(), 3000);
     } else {
       console.log(value);
       this.clientService.saveClient(value);
       this.ref.close();
       this.form.reset();
-      this.message.add({severity: 'success', summary: 'Client Added Successfully'});
+      this.message.add({
+        severity: 'success',
+        summary: 'Client Added Successfully',
+      });
       setTimeout(() => this.message.clear(), 3000);
     }
-  }
+  };
 }

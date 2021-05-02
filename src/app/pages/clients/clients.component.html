@@ -1,33 +1,62 @@
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
 <p-messages></p-messages>
-<p-table [value] = 'clients' styleClass='p-datatable-gridlines p-datatable-responsive-demo p-mt-4'>
-    <ng-template pTemplate="caption">
-        <div class="p-d-flex p-ai-center p-jc-between">
-            <h2>
-                <span><i class="pi pi-users" style="font-size: 2rem"></i></span>   Clients
-            </h2>
-            <h3>Total Owned: {{ total | currency: 'USD' : 'symbol' }}</h3>
-        </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th width="20%" pSortableColumn="firstName">Name <p-sortIcon field="firstName"></p-sortIcon></th>
-            <th width="20%" pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
-            <th width="20%" pSortableColumn="phone">Phone <p-sortIcon field="phone"></p-sortIcon></th>
-            <th width="15%" pSortableColumn="balance">Balance <p-sortIcon field="balance"></p-sortIcon></th>
-            <th width="15%">Details</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-client>
-        <tr>
-            <td>{{client.firstName}} {{client.lastName}}</td>
-            <td>{{client.email}}</td>
-            <td>{{client.phone}}</td>
-            <td>{{client.balance | currency: 'USD' : 'symbol'}}</td>
-            <td>
-                <button (click) = "showDetail(client.id)" type="button" icon="pi pi-user-edit" class="p-button-raised p-button-rounded p-button-warning" pButton pRipple></button>
-                <button (click) = "delete(client.id)" type="button" icon="pi pi-trash" class="p-button-raised p-button-rounded p-button-danger p-ml-2" pButton pRipple></button>
-            </td>
-        </tr>
-    </ng-template>
+<p-table
+  [value]="clients"
+  styleClass="p-datatable-gridlines p-datatable-responsive-demo p-mt-4"
+>
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex p-ai-center p-jc-between">
+      <h2>
+        <span><i class="pi pi-users" style="font-size: 2rem"></i></span> Clients
+      </h2>
+      <h3>Total Owned: {{ total | currency: "USD":"symbol" }}</h3>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th width="20%" pSortableColumn="firstName">
+        Name <p-sortIcon field="firstName"></p-sortIcon>
+      </th>
+      <th width="25%" pSortableColumn="email">
+        Email <p-sortIcon field="email"></p-sortIcon>
+      </th>
+      <th width="15%" pSortableColumn="phone">
+        Phone <p-sortIcon field="phone"></p-sortIcon>
+      </th>
+      <th width="15%" pSortableColumn="balance">
+        Balance <p-sortIcon field="balance"></p-sortIcon>
+      </th>
+      <th width="15%">Details</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-client>
+    <tr>
+      <td>{{ client.firstName }} {{ client.lastName }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.balance | currency: "USD":"symbol" }}</td>
+      <td>
+        <button
+          (click)="showDetail(client.id)"
+          type="button"
+          icon="pi pi-user-edit"
+          class="p-button-raised p-button-rounded p-button-warning"
+          pButton
+          pRipple
+        ></button>
+        <button
+          (click)="delete(client.id)"
+          type="button"
+          icon="pi pi-trash"
+          class="p-button-raised p-button-rounded p-button-danger p-ml-2"
+          pButton
+          pRipple
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
 </p-table>
