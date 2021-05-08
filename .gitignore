@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+firebase.json
+
 # Only exists if Bazel was run
 /bazel-out
 
@@ -40,7 +42,15 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/src/environments/**
 
 # System Files
 .DS_Store
 Thumbs.db
+
+# Api Key
+./src/environments/environment.prod.ts
+./src/environments/environment.ts
+firebase*.json
+firestore.indexes*.json
+firestore*.rules
